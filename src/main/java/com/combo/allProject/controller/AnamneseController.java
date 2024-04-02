@@ -46,10 +46,7 @@ public class AnamneseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable Integer id){
-        Optional<Anamnese> anamnese = anamneseService.findById(id);
-        return anamnese.<ResponseEntity<Object>>map(value -> ResponseEntity.status(HttpStatus.OK).body(value))
-                .orElseGet(() ->
-                        ResponseEntity.status(HttpStatus.NOT_FOUND).body("Object is emprty"));
+        return ResponseEntity.ok().body(anamneseService.findById(id));
     }
 
     @GetMapping()
@@ -60,14 +57,8 @@ public class AnamneseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@NotNull @PathVariable Integer id){
-       Optional<Anamnese> anamneseOptional = anamneseService.findById(id);
-
-       if(!anamneseOptional.isPresent()){
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Object not found");
-       }
-
-       Anamnese anamnese = anamneseOptional.get();
-       anamneseService.delete(anamnese);
+       Anamnese anamneseOptional = anamneseService.findById(id);
+       anamneseService.delete(anamneseOptional);
        return ResponseEntity.status(HttpStatus.OK).body("Anamnese successfully deleted ");
     }
 }

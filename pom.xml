@@ -56,7 +56,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.2.22.Final</version>
         </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-webmvc</artifactId>
+			<version>3.7.5</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

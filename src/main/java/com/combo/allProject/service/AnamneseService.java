@@ -3,6 +3,7 @@ package com.combo.allProject.service;
 import com.combo.allProject.model.Anamnese;
 import com.combo.allProject.repository.AnamneseRepository;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +28,15 @@ public class AnamneseService {
     }
 
 
-    public Optional<Anamnese> findById(@NotNull Integer id){
-        return anamneseRepository.findById(id);
+    public Anamnese findById(@NotNull Integer id){
+
+        Optional<Anamnese> amanaOptional = anamneseRepository.findById(id);
+
+        if(amanaOptional.isPresent()){
+            return amanaOptional.get();
+        }
+
+        throw new ResourceNotFoundException("Anamnese not found.");
     }
 
     public List<Anamnese> findAll(){
