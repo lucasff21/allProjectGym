@@ -1,5 +1,6 @@
 package com.combo.allProject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Anamnese implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date data;
     private Float peso;
     private Float altura;
