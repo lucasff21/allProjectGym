@@ -13,6 +13,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,6 +66,12 @@ class AnamneseServiceTest {
 
     @Test
     void findAll() {
+        when(anamneseRepository.findAll()).thenReturn(List.of(anamnese));
+
+        List<Anamnese> anamneseList = anamneseService.findAll();
+        assertNotNull(anamneseList);
+        assertEquals(1, anamneseList.size());
+        assertEquals(Anamnese.class, anamneseList.get(0).getClass());
     }
 
     @Test
