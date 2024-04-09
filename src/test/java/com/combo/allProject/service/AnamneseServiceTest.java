@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +38,35 @@ class AnamneseServiceTest {
 
     @Test
     void save() {
+        when(anamneseRepository.save(any())).thenReturn(anamnese);
+
+        Anamnese anamnese1 = anamneseService.save(anamnese);
+
+        assertNotNull(anamnese1);
+        assertEquals(Anamnese.class, anamnese1.getClass());
+    }
+
+    //Retornar exceção para o metodo create
+    @Test
+    void ExceptionCreate() {
+        // Mockando o comportamento do anamneseRepository.save para lançar uma exceção IllegalArgumentException
+        when(anamneseRepository.save(any())).thenThrow(new IllegalArgumentException("Object cannot be empty"));
+
+        // Verificando se o método save do anamneseService lança a exceção esperada
+        IllegalArgumentException exceptionMessage = assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.save(anamnese);
+        });
+
+        // Verificando a mensagem da exceção
+        String expectedMessage = "Object cannot be empty";
+        String actualMessage = exceptionMessage.getMessage();
+        assert(expectedMessage.equals(actualMessage));
+
+
+        //PODE SE REALIZAR DA FORMA ABAIXO OU DA DE CIMA, AMBAS TERÃO O MESMO EFEITO
+        assertThrows(IllegalArgumentException.class, () -> {
+            anamneseService.save(anamnese);
+        }, "Object cannot be empty");
     }
 
     @Test
