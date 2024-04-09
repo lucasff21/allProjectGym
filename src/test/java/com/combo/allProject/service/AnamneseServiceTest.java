@@ -19,7 +19,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class AnamneseServiceTest {
     @InjectMocks
@@ -106,10 +106,22 @@ class AnamneseServiceTest {
 
     @Test
     void update() {
+        when(anamneseRepository.save(any())).thenReturn(anamnese);
+
+        Anamnese anamneseUpdate = anamneseService.update(anamnese);
+
+        assertNotNull(anamneseUpdate);
+        assertEquals(Anamnese.class, anamneseUpdate.getClass());
+
     }
+
 
     @Test
     void delete() {
+        doNothing().when(anamneseRepository).delete(any());
+
+        anamneseService.delete(anamnese);
+        verify(anamneseRepository, times(1)).delete(anamnese);
     }
 
     private void startUser(){
