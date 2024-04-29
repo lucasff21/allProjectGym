@@ -1,1 +1,77 @@
-testando
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Nova Anamnese
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Nova Anamnese</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form [formGroup]="formAnamnese">
+              <div class="form-group mt-1">
+                <input type="date" class="form-control mb-1" placeholder="data" formControlName="data">
+                <input type="number" class="form-control mb-1" placeholder="Peso" formControlName="peso">
+                <input type="number" class="form-control mb-1" placeholder="Altura" formControlName="altura">
+                <input type="number" class="form-control mb-1" placeholder="Circunferencia cintura" formControlName="circunferencia_cintura">
+                <input type="number" class="form-control mb-1" placeholder="Circunferencia quadril" formControlName="circunferencia_quadril">
+                <input type="number" class="form-control mb-1" placeholder="Percentual gordura" formControlName="percentual_gordura">
+                <input type="number" class="form-control mb-1" placeholder="Massa magra" formControlName="massa_magra">
+                <input type="number" class="form-control mb-1" placeholder="Massa gorda" formControlName="massa_gorda">
+                <input type="number" class="form-control mb-1" placeholder="Massa muscular" formControlName="massa_muscular">
+                <input type="number" class="form-control mb-1" placeholder="IMC" formControlName="imc">
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Sair
+                </button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let anamnese of listaAnamnese">
+      <tr>
+        <td>{{ anamnese.id }}</td>
+        <td>{{ anamnese.data }}</td>
+        <td>{{ anamnese.peso }}</td>
+        <td>{{ anamnese.altura }}</td>
+        <td>{{ anamnese.circunferencia_cintura }}</td>
+        <td>{{ anamnese.circunferencia_quadril }}</td>
+        <td>{{ anamnese.percentual_gordura }}</td>
+        <td>{{ anamnese.massa_magra }}</td>
+        <td>{{ anamnese.massa_gorda }}</td>
+        <td>{{ anamnese.massa_muscular }}</td>
+        <td>{{ anamnese.imc }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
