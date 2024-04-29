@@ -45,9 +45,7 @@ public class AnamneseService {
 
     public Anamnese update(@NotNull Anamnese anamnese){
         Optional<Anamnese> anamnese1 = anamneseRepository.findById(anamnese.getId());
-        if(anamnese1.isPresent()){
-            anamnese.setId(anamnese1.get().getId());
-        }
+        anamnese1.ifPresent(value -> anamnese.setId(value.getId()));
 
         return anamneseRepository.save(anamnese);
     }
