@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AnamneseService } from 'src/app/services/anamnese.service';
+import { iAnamneseModel } from './iAnamneseModel';
 
 @Component({
   selector: 'app-anamnese',
@@ -58,5 +59,19 @@ export class AnamneseComponent implements OnInit {
         window.location.reload();
       }
     })
+  }
+
+  updateAnamnese(id: number, dadosAnamnese: iAnamneseModel) {
+    this.httpClientAnamneseService.updateAnamnese(id, dadosAnamnese)
+    .subscribe({
+      next: (dados) => {
+        console.log('UPDATE OK')
+      }
+    })
+  }
+
+  abrirModalCreate(dadosAnamnese: object){
+    document.getElementById('buttonOpenModal')?.click()
+    this.formAnamnese.patchValue(dadosAnamnese)
   }
 }

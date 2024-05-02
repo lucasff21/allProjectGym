@@ -62,7 +62,7 @@ class AnamneseControllerTest {
     void update() {
         when(anamneseService.update(any())).thenReturn(anamnese);
 
-        ResponseEntity<Anamnese> anamnese1 = anamneseController.update(anamneseDTO);
+        ResponseEntity<Anamnese> anamnese1 = anamneseController.update(anamneseDTO.getId(), anamneseDTO);
 
         assertEquals(HttpStatus.OK, anamnese1.getStatusCode());
         assertNotNull(anamnese1.getBody());

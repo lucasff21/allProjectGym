@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-4">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button id="buttonOpenModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Nova Anamnese
       </button>
 
@@ -46,16 +46,17 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Data</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Altura</th>
+        <th scope="col">Circ. cintura</th>
+        <th scope="col">Circ. quadril</th>
+        <th scope="col">Perc. gordura</th>
+        <th scope="col">Massa gagra</th>
+        <th scope="col">Massa gorda</th>
+        <th scope="col">Massa muscular</th>
+        <th scope="col">imc</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody *ngFor="let anamnese of listaAnamnese">
@@ -71,6 +72,10 @@
         <td>{{ anamnese.massa_gorda }}</td>
         <td>{{ anamnese.massa_muscular }}</td>
         <td>{{ anamnese.imc }}</td>
+        <td>
+          <button type="button" class="btn btn-secondary" (click)="abrirModalCreate(anamnese)">Update</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -4,6 +4,7 @@ import com.combo.allProject.dto.AnamneseDTO;
 import com.combo.allProject.model.Anamnese;
 import com.combo.allProject.service.AnamneseService;
 import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,9 +34,10 @@ public class AnamneseController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Anamnese> update(@RequestBody AnamneseDTO anamneseDTO) {
+    public ResponseEntity<Anamnese> update(@PathVariable(value = "id") @NonNull Integer id,
+                                           @RequestBody AnamneseDTO anamneseDTO) {
 
-        Anamnese anamnese = new Anamnese();
+        Anamnese anamnese = anamneseService.findById(id);
         BeanUtils.copyProperties(anamneseDTO, anamnese);
         anamneseService.save(anamnese);
 
