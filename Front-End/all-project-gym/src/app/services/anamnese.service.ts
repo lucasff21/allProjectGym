@@ -21,5 +21,13 @@ export class AnamneseService {
   saveAnamnese(dadosAnamnese: iAnamneseModel){
     return this.http.post<iAnamneseModel>(`${this.apiUrl}`, dadosAnamnese)
   }
+
+  updateAnamnese(id: number, dadosAnamnese: iAnamneseModel): Observable<iAnamneseModel> {
+    return this.http.put<iAnamneseModel>(`${this.apiUrl}/${id}`, dadosAnamnese)
+  }
+
+  deleteAnamnese(id: number){
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
 }
 
