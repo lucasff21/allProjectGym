@@ -74,7 +74,7 @@
         <td>{{ anamnese.imc }}</td>
         <td>
           <button type="button" class="btn btn-secondary" (click)="abrirModalCreate(anamnese)">Update</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="deleteAnamnese(anamnese.id)">Delete</button>
         </td>
       </tr>
     </tbody>

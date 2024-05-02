@@ -34,12 +34,12 @@ public class AnamneseController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Anamnese> update(@PathVariable(value = "id") @NonNull Integer id,
-                                           @RequestBody AnamneseDTO anamneseDTO) {
+    public ResponseEntity<Anamnese> update(@PathVariable(value = "id") @NonNull Integer id, @RequestBody AnamneseDTO anamneseDTO) {
+
+        System.out.println(anamneseDTO);
 
         Anamnese anamnese = anamneseService.findById(id);
         BeanUtils.copyProperties(anamneseDTO, anamnese);
-        anamneseService.save(anamnese);
 
         Anamnese anamneseCreated = anamneseService.update(anamnese);
 
@@ -61,6 +61,6 @@ public class AnamneseController {
     public ResponseEntity<Object> delete(@NotNull @PathVariable Integer id){
        Anamnese anamneseOptional = anamneseService.findById(id);
        anamneseService.delete(anamneseOptional);
-       return ResponseEntity.status(HttpStatus.OK).body("Anamnese successfully deleted ");
+       return ResponseEntity.ok().build();
     }
 }
