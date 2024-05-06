@@ -26,7 +26,6 @@ import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
-@ActiveProfiles("test")
 class AnamneseControllerTest {
     @InjectMocks
     private AnamneseController anamneseController;
@@ -61,8 +60,9 @@ class AnamneseControllerTest {
     @Test
     void update() {
         when(anamneseService.update(any())).thenReturn(anamnese);
+        when(anamneseService.findById(anyInt())).thenReturn(anamnese);
 
-        ResponseEntity<Anamnese> anamnese1 = anamneseController.update(anamneseDTO.getId(), anamneseDTO);
+        ResponseEntity<Anamnese> anamnese1 = anamneseController.update(anamneseDTOId.getId(), anamneseDTOId);
 
         assertEquals(HttpStatus.OK, anamnese1.getStatusCode());
         assertNotNull(anamnese1.getBody());

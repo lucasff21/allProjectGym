@@ -2,6 +2,7 @@ package com.combo.allProject.service;
 
 import com.combo.allProject.model.Anamnese;
 import com.combo.allProject.repository.AnamneseRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class AnamneseService {
     }
 
 
+
     public Anamnese findById(@NotNull Integer id){
 
         Optional<Anamnese> amanaOptional = anamneseRepository.findById(id);
@@ -47,9 +49,13 @@ public class AnamneseService {
 
         Optional<Anamnese> anamnese1 = anamneseRepository.findById(anamnese.getId());
 
-        anamnese1.ifPresent(value -> anamnese.setId(value.getId()));
-
-        return anamneseRepository.save(anamnese);
+        if (anamnese1.isPresent()){
+            Anamnese existingAnamnese = anamnese1.get();
+            existingAnamnese.setId(anamnese.getId());
+            return anamneseRepository.save(existingAnamnese);
+        }else {
+            throw new EntityNotFoundException("Anamnese not found with ID: " + anamnese.getId());
+        }
     }
 
     public void delete(Anamnese anamnese){

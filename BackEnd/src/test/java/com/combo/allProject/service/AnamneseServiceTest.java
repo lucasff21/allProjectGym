@@ -12,6 +12,7 @@
     import org.mockito.MockitoAnnotations;
     import org.springframework.boot.test.context.SpringBootTest;
     import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+    import org.springframework.http.ResponseEntity;
     import org.springframework.test.context.ActiveProfiles;
 
     import java.util.Date;
@@ -25,7 +26,7 @@
     import static org.mockito.MockitoAnnotations.openMocks;
 
     @SpringBootTest
-    @ActiveProfiles("test")
+   // @ActiveProfiles("test")
     class AnamneseServiceTest {
         @InjectMocks
         private AnamneseService anamneseService;
@@ -50,6 +51,18 @@
             assertNotNull(anamnese1);
             assertEquals(Anamnese.class, anamnese1.getClass());
         }
+
+        @Test
+        void saveVerifyAnamneseIsNull(){
+            when(anamneseRepository.save(isNull())).thenThrow(new IllegalArgumentException("Object cannot be empty"));
+
+            assertThrows(IllegalArgumentException.class, () -> {
+                anamneseService.save(null);
+            }, "Object cannot be empty");
+        }
+
+
+
 
         //Retornar exceção para o metodo create
         @Test
@@ -84,6 +97,16 @@
         }
 
         @Test
+        void findByIdWhenReturnIsNotFound() {
+            when(anamneseRepository.findById(isNull())).thenThrow(new ResourceNotFoundException("Anamnese not found."));
+
+            assertThrows(ResourceNotFoundException.class, () -> {
+                anamneseService.findById(null);
+            }, "Anamnese not found.");
+
+        }
+
+        @Test
         void testFindByIdNotFoundException(){
             when(anamneseRepository.findById(anyInt())).thenThrow(new ResourceNotFoundException("Anamnese not found."));
                 //Pode ser feito desta maneira
@@ -111,12 +134,13 @@
 
         @Test
         void update() {
+            when(anamneseRepository.findById(anyInt())).thenReturn(anamneseOptional);
             when(anamneseRepository.save(any())).thenReturn(anamnese);
 
-            Anamnese anamneseUpdate = anamneseService.update(anamnese);
 
-            assertNotNull(anamneseUpdate);
-            assertEquals(Anamnese.class, anamneseUpdate.getClass());
+            Anamnese anamneseUpdate = anamneseService.update(anamnese);
+                assertNotNull(anamneseUpdate);
+                assertEquals(Anamnese.class, anamneseUpdate.getClass());
 
         }
 
