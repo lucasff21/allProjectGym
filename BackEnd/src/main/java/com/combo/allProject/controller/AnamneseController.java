@@ -36,13 +36,13 @@ public class AnamneseController {
     @PutMapping("/{id}")
     public ResponseEntity<Anamnese> update(@PathVariable(value = "id") @NonNull Integer id, @RequestBody AnamneseDTO anamneseDTO) {
 
-        System.out.println(anamneseDTO);
-
         Anamnese anamnese = anamneseService.findById(id);
+        if(anamnese == null) {
+            return ResponseEntity.notFound().build();
+        }
+
         BeanUtils.copyProperties(anamneseDTO, anamnese);
-
         Anamnese anamneseCreated = anamneseService.update(anamnese);
-
         return ResponseEntity.ok().body(anamneseCreated);
     }
 

@@ -85,8 +85,7 @@ export class AnamneseComponent implements OnInit {
 
   deleteAnamnese(id: number) {
     this.httpClientAnamneseService.deleteAnamnese(id).subscribe({
-      next: () => {
-
+      next: (e) => {
         this._snackBar.open('ITEM APAGADO COM SUCESSO', '', { duration: 3000 })
         this.getAll();
 
