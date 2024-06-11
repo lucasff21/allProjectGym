@@ -22,9 +22,7 @@ public class ExercicioService {
         Optional<Exercicio> exercicioOptional = exercicioRepository.findById(exercicio.getId());
 
         if (exercicioOptional.isPresent()) {
-            Exercicio exercicio1 = exercicioOptional.get();
-            exercicio1.setId(exercicio.getId());
-            return exercicioRepository.save(exercicio1);
+            return exercicioRepository.save(exercicio);
         } else {
             throw new EntityNotFoundException("Objeto não encontrado");
         }
