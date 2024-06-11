@@ -1,8 +1,10 @@
 package com.combo.allProject.dto;
 
+import com.combo.allProject.model.Aluno;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ExercicioDTO {
@@ -13,4 +15,5 @@ public class ExercicioDTO {
     private Float peso;
     private String observacao;
     private Date data;
+    private List<Aluno> alunos;
 }

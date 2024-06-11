@@ -40,15 +40,15 @@ public class ExercicioController {
     @PutMapping("/{id}")
     public ResponseEntity<Exercicio> update(@PathVariable Integer id, ExercicioDTO exercicioDTO){
 
-            Exercicio exercicioFind = exercicioService.findById(id);
+        Exercicio exercicioFind = exercicioService.findById(id);
 
-            if(exercicioFind == null){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
+        if(exercicioFind == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
-            Exercicio exercicio = new Exercicio();
-            BeanUtils.copyProperties(exercicio, exercicioDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(exercicioService.update(exercicio));
+        Exercicio exercicio = new Exercicio();
+        BeanUtils.copyProperties(exercicio, exercicioDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(exercicioService.update(exercicio));
     }
 
     @GetMapping("/{id}")

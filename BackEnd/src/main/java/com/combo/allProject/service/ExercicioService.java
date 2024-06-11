@@ -22,9 +22,7 @@ public class ExercicioService {
         Optional<Exercicio> exercicioOptional = exercicioRepository.findById(exercicio.getId());
 
         if (exercicioOptional.isPresent()) {
-            Exercicio exercicio1 = exercicioOptional.get();
-            exercicio1.setId(exercicio.getId());
-            return exercicioRepository.save(exercicio1);
+            return exercicioRepository.save(exercicio);
         } else {
             throw new EntityNotFoundException("Objeto não encontrado");
         }
@@ -34,7 +32,7 @@ public class ExercicioService {
         Optional<Exercicio> exercicioOptional = exercicioRepository.findById(id);
 
         if(exercicioOptional.isPresent()){
-           return exercicioOptional.get();
+            return exercicioOptional.get();
         } else {
             throw new EntityNotFoundException("Objeto não encontrado");
         }
@@ -47,7 +45,7 @@ public class ExercicioService {
     public void delete (Exercicio exercicio){
         Optional<Exercicio> exercicioOptional = exercicioRepository.findById(exercicio.getId());
         if(exercicioOptional.isPresent()){
-             exercicioRepository.delete(exercicio);
+            exercicioRepository.delete(exercicio);
         } else {
             throw new RuntimeException("Não foi possivel deletar");
 

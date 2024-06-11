@@ -1,13 +1,14 @@
+
 package com.combo.allProject.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @Entity
 public class Exercicio {
@@ -22,4 +23,7 @@ public class Exercicio {
     private Float peso;
     private String observacao;
     private Date data;
+
+    @ManyToMany(mappedBy = "exercicios")
+    private List<Aluno> alunos = new ArrayList<>();
 }
