@@ -1,18 +1,15 @@
+
 package com.combo.allProject.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Exercicio {
 
@@ -29,5 +26,4 @@ public class Exercicio {
 
     @ManyToMany(mappedBy = "exercicios")
     private List<Aluno> alunos = new ArrayList<>();
-
 }
