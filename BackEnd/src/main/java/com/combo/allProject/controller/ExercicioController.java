@@ -25,46 +25,42 @@ public class ExercicioController {
     }
 
     @PostMapping
-    public ResponseEntity<Exercicio> save(ExercicioDTO exercicioDTO){
-        try{
+    public ResponseEntity<Exercicio> save(@RequestBody ExercicioDTO exercicioDTO) {
+
+        try {
             Exercicio exercicio = new Exercicio();
-            BeanUtils.copyProperties(exercicio, exercicioDTO);
+            BeanUtils.copyProperties(exercicioDTO, exercicio);
             Exercicio exercicioSalvo = exercicioService.save(exercicio);
 
-            return  ResponseEntity.status(HttpStatus.CREATED).body(exercicioSalvo);
+            return ResponseEntity.status(HttpStatus.CREATED).body(exercicioSalvo);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Exercicio> update(@PathVariable Integer id, ExercicioDTO exercicioDTO){
+    public ResponseEntity<Exercicio> update(@PathVariable Integer id, @RequestBody ExercicioDTO exercicioDTO) {
 
-            Exercicio exercicioFind = exercicioService.findById(id);
-
-            if(exercicioFind == null){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
-
-            Exercicio exercicio = new Exercicio();
-            BeanUtils.copyProperties(exercicio, exercicioDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(exercicioService.update(exercicio));
+        Exercicio exercicioFind = new Exercicio();
+        BeanUtils.copyProperties(exercicioDTO, exercicioFind);
+        exercicioService.update(exercicioFind);
+        return ResponseEntity.status(HttpStatus.OK).body(exercicioFind);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Exercicio> findById(@PathVariable Integer id){
+    public ResponseEntity<Exercicio> findById(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(exercicioService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<Exercicio>> findAll(){
+    public ResponseEntity<List<Exercicio>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(exercicioService.findAll());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Exercicio> delete(@NotNull @PathVariable Integer id){
+    public ResponseEntity<Exercicio> delete(@NotNull @PathVariable Integer id) {
         Exercicio exercicio = exercicioService.findById(id);
-        if(exercicio != null){
+        if (exercicio != null) {
             exercicioService.delete(exercicio);
             return ResponseEntity.status(HttpStatus.OK).build();
         } else {

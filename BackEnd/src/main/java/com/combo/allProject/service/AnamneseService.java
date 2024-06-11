@@ -38,7 +38,7 @@ public class AnamneseService {
             return amanaOptional.get();
         }
 
-        throw new ResourceNotFoundException("Anamnese not found.");
+        throw new ResourceNotFoundException("Anamnese não encontrada.");
     }
 
     public List<Anamnese> findAll(){
@@ -50,9 +50,7 @@ public class AnamneseService {
         Optional<Anamnese> anamnese1 = anamneseRepository.findById(anamnese.getId());
 
         if (anamnese1.isPresent()){
-            Anamnese existingAnamnese = anamnese1.get();
-            existingAnamnese.setId(anamnese.getId());
-            return anamneseRepository.save(existingAnamnese);
+            return anamneseRepository.save(anamnese);
         }else {
             throw new EntityNotFoundException("Anamnese not found with ID: " + anamnese.getId());
         }
