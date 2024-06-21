@@ -1,0 +1,35 @@
+<div class="container modal-items mt-5 mb-5">
+  <div class="modal-content">
+    <form [formGroup]="formAluno">
+      <mat-form-field class="full-width">
+        <mat-label>Nome:</mat-label>
+        <input matInput placeholder="Nome:" name="nome" formControlName="nome" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Idade:</mat-label>
+        <input matInput placeholder="Idade:" name="idade" formControlName="idade" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Exercícios</mat-label>
+        <mat-select formControlName="exercicios" multiple>
+          <mat-select-trigger>
+            {{ formAluno.get('exercicios')?.value?.[0]?.grupo_muscular || '' }}
+            <span *ngIf="(formAluno.get('exercicios')?.value?.length || 0) > 1" class="example-additional-selection">
+              (+{{ (formAluno.get('exercicios')?.value?.length || 0) - 1 }} {{ formAluno.get('exercicios')?.value?.length === 2 ? 'outro' : 'outros' }})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let exercicio of exercicioList" [value]="exercicio">
+            {{ exercicio.grupo_muscular }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <div class="modal-buttons">
+      <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+      <button mat-raised-button color="primary" (click)="closeModal()">Fechar</button>
+    </div>
+  </div>
+</div>

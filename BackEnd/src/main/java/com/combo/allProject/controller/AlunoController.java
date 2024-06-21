@@ -14,14 +14,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/aluno")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class AlunoController {
     @Autowired
     private AlunoService alunoService;
     @PostMapping
     public ResponseEntity<Aluno> save(@RequestBody AlunoDTO alunoDTO){
-
+        System.out.println(alunoDTO);
         Aluno aluno = new Aluno();
         BeanUtils.copyProperties(alunoDTO, aluno);
+        System.out.println(aluno);
 
         Aluno alunoCreated = alunoService.save(aluno);
 

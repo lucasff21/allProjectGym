@@ -26,6 +26,9 @@ public class ExercicioController {
 
     @PostMapping
     public ResponseEntity<Exercicio> save(ExercicioDTO exercicioDTO){
+
+        System.out.println(exercicioDTO);
+
         try{
             Exercicio exercicio = new Exercicio();
             BeanUtils.copyProperties(exercicio, exercicioDTO);

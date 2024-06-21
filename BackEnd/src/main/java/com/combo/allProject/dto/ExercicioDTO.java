@@ -15,5 +15,5 @@ public class ExercicioDTO {
     private Float peso;
     private String observacao;
     private Date data;
-    private List<Aluno> alunos;
+
 }

@@ -19,7 +19,7 @@ public class Aluno {
     private String nome;
     private String idade;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "exercicios_aluno",
             joinColumns = @JoinColumn(name = "aluno_id", referencedColumnName = "id"),

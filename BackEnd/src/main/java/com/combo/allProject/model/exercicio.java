@@ -24,6 +24,5 @@ public class Exercicio {
     private String observacao;
     private Date data;
 
-    @ManyToMany(mappedBy = "exercicios")
-    private List<Aluno> alunos = new ArrayList<>();
+
 }
