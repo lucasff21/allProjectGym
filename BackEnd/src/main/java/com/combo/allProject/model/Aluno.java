@@ -18,6 +18,7 @@ public class Aluno {
     private Integer id;
     private String nome;
     private String idade;
+    
 
     @ManyToMany
     @JoinTable(
