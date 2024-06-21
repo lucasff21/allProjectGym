@@ -37,7 +37,7 @@ export class AlunoComponent implements OnInit {
     this.getAllAluno();
   }
 
-  displayedColumns = ['nome', 'idade', 'actions']; // Defina suas colunas aqui
+  displayedColumns = ['nome', 'idade', 'ações']; // Defina suas colunas aqui
 
   // Inicialize a fonte de dados da tabela com MatTableDataSource
   alunosList = new MatTableDataSource<iAlunoModel>();
