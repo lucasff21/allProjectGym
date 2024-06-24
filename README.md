@@ -71,7 +71,7 @@ Inicie o servidor Spring Boot.
 - Navegue até o diretório do projeto React Native (cd allProjectGym/mobile).
 - Instale as dependências:
   npm install
--Inicie o aplicativo no dispositivo Android conectado ou no emulador:
+- Inicie o aplicativo no dispositivo Android conectado ou no emulador:
   npm run android
 
   Isso iniciará o aplicativo React Native no dispositivo Android conectado ou no emulador.
