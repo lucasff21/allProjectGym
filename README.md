@@ -37,8 +37,9 @@ Certifique-se de ter os seguintes pré-requisitos instalados em sua máquina:
    - ```
      git clone https://github.com/lucasff21/allProjectGym.git
      ```
+  - ```
      cd AllProjectGym
-     
+    ```
 
 2. Instale as dependências:
    - ```
