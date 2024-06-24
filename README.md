@@ -36,8 +36,9 @@ Certifique-se de ter os seguintes pré-requisitos instalados em sua máquina:
 1. Clone o repositório:
    - ```
      git clone https://github.com/lucasff21/allProjectGym.git
-     cd AllProjectGym
      ```
+     cd AllProjectGym
+     
 
 2. Instale as dependências:
    - ```
