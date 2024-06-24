@@ -59,9 +59,9 @@ Para iniciar a aplicação, siga os passos abaixo:
 - Abra o Visual Studio Code.
 - Navegue até o diretório do projeto frontend (`cd allProjectGym/frontend`).
 - Instale as dependências:
-  ○ `npm install`
+   `npm install`
 - Inicie o servidor Angular:
-  ○ `ng serve --open`
+   `ng serve --open`
 
   Isso iniciará o frontend Angular e abrirá automaticamente uma janela do navegador.
 
@@ -70,9 +70,9 @@ Para iniciar a aplicação, siga os passos abaixo:
 - Abra o Visual Studio Code.
 - Navegue até o diretório do projeto React Native (`cd allProjectGym/mobile`).
 - Instale as dependências:
-  ○ `npm install`
+   `npm install`
 - Inicie o aplicativo no dispositivo Android conectado ou no emulador:
-  ○ `npm run android`
+   `npm run android`
 
   Isso iniciará o aplicativo React Native no dispositivo Android conectado ou no emulador.
 
