@@ -68,7 +68,7 @@ Para iniciar a aplicação, siga os passos abaixo:
 #### Aplicativo React Native
 
 - Abra o Visual Studio Code.
-- Navegue até o diretório do projeto React Native (`cd allProjectGym/mobile`).
+- Navegue até o diretório do projeto React Native (`cd allProjectGym/consumeApi-ReactNative`).
 - Instale as dependências:
    `npm install`
 - Inicie o aplicativo no dispositivo Android conectado ou no emulador:
