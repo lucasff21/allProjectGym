@@ -2,7 +2,7 @@
 
 ## 1. Sobre o Projeto
 
-O All Project Gym é uma aplicação desenvolvida para gerenciar e acompanhar fichas de treino, estabelecendo uma relação eficiente entre alunos, exercícios e anamneses. Este projeto visa implementar e aprimorar técnicas de programação utilizando tecnologias modernas. Com uma estrutura flexível, o All Project Gym permite a adição de novos módulos conforme as necessidades de treinamento evoluem.
+O All Project Gym é uma aplicação desenvolvida para gerenciar e acompanhar fichas de treino, estabelecendo uma relação eficiente entre alunos, exercícios e anamneses. Este projeto visa implementar e aprimorar técnicas de programação utilizando tecnologias modernas. Com uma estrutura flexível, com o decorrer do projeto, pretendo criar novos modulos, afim de tornar o sistema mais robusto.
 
 ## 2. Tecnologias Utilizadas
 
