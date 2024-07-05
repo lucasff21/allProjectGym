@@ -15,6 +15,8 @@ public class AlunoDTO {
     private String nome;
     private String idade;
     List<Exercicio> exercicios;
+    private  String  password;
+    private  String  email;
 
 
 }
